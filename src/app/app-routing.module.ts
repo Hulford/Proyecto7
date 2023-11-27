@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes= [
   {
-    path: 'selector'
-    // loadChildren: lazyload
+    path: 'selector',
+    loadChildren: () => import('./countries/countries.module').then( m =>m.CountriesModule),
   },
   {
     path: '**',
@@ -16,7 +16,7 @@ const routes: Routes= [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule
+    RouterModule.forRoot(routes)
   ],exports: [
 RouterModule
   ]
