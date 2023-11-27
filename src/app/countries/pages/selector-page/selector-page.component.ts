@@ -9,6 +9,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   ]
 })
 export class SelectorPageComponent implements OnInit{
+
+public countriesByRegion: SmallCountry[]=[];
+
   public myform: FormGroup = this.fb.group({
      region: ['', Validators.required],
      country: ['', Validators.required],
@@ -30,8 +33,9 @@ this.onRegionsChanged();
   .pipe(
     switchMap(region => this.countriesService.getCountriesByRegion(region))
   )
-.subscribe(region => {
-  console.log({ region})
+.subscribe(countries => {
+  this.countriesByRegion = countries;
+ // console.log({ countries})
 } );
  }
 
@@ -43,7 +47,7 @@ this.onRegionsChanged();
 // import { CountriesRoutingModule } from './countries-routing.module';
 // import { SelectorPageComponent } from './pages/selector-page/selector-page.component';
 // import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Region } from '../../interfaces/country.interfaces';
+import { Region, SmallCountry } from '../../interfaces/country.interfaces';
 import { switchMap } from 'rxjs';
 
 
