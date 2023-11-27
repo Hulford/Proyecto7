@@ -12,4 +12,8 @@ private _regions: Region[] = [Region.Africa, Region.America, Region.Asia, Region
   get regions(): Region[]{
 return [ ...this._regions];
   }
+  getCountriesByRegion( region: Region): Country[]{
+
+return [];
+  }
 }
