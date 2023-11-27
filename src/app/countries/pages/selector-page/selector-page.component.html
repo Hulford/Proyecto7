@@ -2,12 +2,13 @@
 <hr>
 
 <form [formGroup]="myform" >
+
   <div class="row mb-3">
     <div class="col">
       <label class="form-label">Container</label>
 <select formControlName="region" class="form-control">
   <option value="">-- Seleccione Continente --</option>
-
+<option *ngFor="let region of regions" [value]="region">{{region}} </option>
 </select>
     </div>
 

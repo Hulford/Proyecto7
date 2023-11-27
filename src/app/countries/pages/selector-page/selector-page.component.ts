@@ -1,3 +1,4 @@
+import { CountriesService } from './../../services/countries.service';
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
@@ -15,7 +16,12 @@ export class SelectorPageComponent {
   })
   constructor(
         private fb: FormBuilder,
+        private countriesService: CountriesService,
        ){}
+
+       get regions(): Region[]{
+        return this.countriesService.regions;
+       }
 }
 
 
@@ -24,6 +30,7 @@ export class SelectorPageComponent {
 // import { CountriesRoutingModule } from './countries-routing.module';
 // import { SelectorPageComponent } from './pages/selector-page/selector-page.component';
 // import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Region } from '../../interfaces/country.interfaces';
 
 
 
