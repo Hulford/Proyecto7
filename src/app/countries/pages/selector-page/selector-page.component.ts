@@ -31,6 +31,7 @@ this.onRegionsChanged();
   onRegionsChanged(): void{
   this.myform.get('region')!.valueChanges
   .pipe(
+    tap( () => this.myform.get('country')!.setValue('')),
     switchMap(region => this.countriesService.getCountriesByRegion(region))
   )
 .subscribe(countries => {
@@ -48,7 +49,7 @@ this.onRegionsChanged();
 // import { SelectorPageComponent } from './pages/selector-page/selector-page.component';
 // import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Region, SmallCountry } from '../../interfaces/country.interfaces';
-import { switchMap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
 
 
 
